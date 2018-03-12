@@ -1,0 +1,38 @@
+language: python
+sudo: false
+cache:
+  directories:
+    - ~/.cache/pip
+
+env:
+  global:
+    - PIP_WHEEL_DIR=$HOME/.cache/pip/wheels
+    - PIP_FIND_LINKS=file://$HOME/.cache/pip/wheels
+    - TESTDATA_DIR=$HOME/testdata
+
+addons:
+  apt:
+    packages:
+    - libspatialite-dev
+    - swig2.0
+
+python:
+  - "2.7"
+  - "3.5"
+
+virtualenv:
+  system_site_packages: true
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ppa -y
+  - sudo apt-get update -q
+  - sudo apt-get install gdal-bin python-gdal python3-gdal libproj-dev libgdal-dev -y
+  - pip install -U pip
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+  - pip install coverage
+
+script:
+  - coverage run --source ci_testing/ -m pytest 
