@@ -28,10 +28,10 @@ before_install:
   - sudo apt-get update -q
   - sudo apt-get install gdal-bin python-gdal python3-gdal libproj-dev libgdal-dev git -y
   - pip install -U pip
-  - pip install git+https://github.com/johntruckenbrodt/pyroSAR.git
 
 install:
   - pip install -r requirements.txt
+  - pip install git+https://github.com/johntruckenbrodt/pyroSAR.git
   - pip install coveralls
   - pip install coverage
 
