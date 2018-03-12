@@ -30,7 +30,6 @@ before_install:
   - sudo apt-get install git
   - pip install -U pip
   - pip install git+https://github.com/johntruckenbrodt/pyroSAR.git
-  - pip3 install git+https://github.com/johntruckenbrodt/pyroSAR.git
 
 install:
   - pip install -r requirements.txt
