@@ -22,22 +22,6 @@ testcases = [
      'spacing': (10.0, 9.998647),
      'start': '20150222T170750',
      'stop': '20150222T170815'
-     },
-    #CEOS_PSR
-    {'path': os.path.join(testdir, '0000022708_001001_ALOS2015976960-140909.zip'),
-     'acquisition_mode': 'FBD',
-     'compression': 'zip',
-     'corners': {'xmax': -62.1629744, 'xmin': -62.9005207, 'ymax': -10.6783401, 'ymin': -11.4233051},
-     'lines': 13160,
-     'outname': 'PSR2_FBD__A_20140909T043342',
-     'orbit': 'A',
-     'polarizations': ['HH', 'HV'],
-     'product': '1.5',
-     'samples': 12870,
-     'sensor': 'PSR2',
-     'spacing': (6.25, 6.25),
-     'start': '20140909T043342',
-     'stop': '20140909T043352'
      }
 ]
 

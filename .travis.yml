@@ -24,7 +24,6 @@ virtualenv:
   system_site_packages: true
 
 before_install:
-  - travis_wait 40 . ./ci_testing/install/download_testdata.sh
   - sudo add-apt-repository ppa:ubuntugis/ppa -y
   - sudo apt-get update -q
   - sudo apt-get install gdal-bin python-gdal python3-gdal libproj-dev libgdal-dev git -y
