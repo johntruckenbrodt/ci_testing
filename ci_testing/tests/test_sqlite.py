@@ -16,6 +16,22 @@ ogr.UseExceptions()
 osr.UseExceptions()
 
 
+def test_crsConvert():
+    assert crsConvert(crsConvert(4326, 'wkt'), 'proj4') == '+proj=longlat +datum=WGS84 +no_defs '
+    assert crsConvert(crsConvert(4326, 'prettyWkt'), 'opengis') == 'http://www.opengis.net/def/crs/EPSG/0/4326'
+    assert crsConvert('+proj=longlat +datum=WGS84 +no_defs ', 'epsg') == 4326
+    assert crsConvert('http://www.opengis.net/def/crs/EPSG/0/4326', 'epsg') == 4326
+    assert crsConvert(crsConvert('http://www.opengis.net/def/crs/EPSG/0/4326', 'osr'), 'epsg') == 4326
+    with pytest.raises(TypeError):
+        crsConvert('xyz', 'epsg')
+    with pytest.raises(ValueError):
+        crsConvert(4326, 'xyz')
+
+
+def test_haversine():
+    assert haversine(50, 10, 51, 10) == 111194.92664455889
+
+
 def test_dissolve(tmpdir):
     scene = identify('ci_testing/tests/data/S1A_IW_GRDH_1SDV_20150222T170750_20150222T170815_004739_005DD8_3768.zip')
     bbox1 = scene.bbox()
