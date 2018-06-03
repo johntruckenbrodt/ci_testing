@@ -33,7 +33,7 @@ def test_haversine():
 
 
 def test_Vector():
-    scene = identify('pyroSAR/tests/data/S1A_IW_GRDH_1SDV_20150222T170750_20150222T170815_004739_005DD8_3768.zip')
+    scene = identify('ci_testing/tests/data/S1A_IW_GRDH_1SDV_20150222T170750_20150222T170815_004739_005DD8_3768.zip')
     bbox1 = scene.bbox()
     assert bbox1.getArea() == 7.573045244595988
     assert bbox1.extent == {'ymax': 52.183979, 'ymin': 50.295261, 'xmin': 8.017178, 'xmax': 12.0268}
