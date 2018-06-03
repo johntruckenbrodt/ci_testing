@@ -9,7 +9,7 @@ env:
     - PIP_WHEEL_DIR=$HOME/.cache/pip/wheels
     - PIP_FIND_LINKS=file://$HOME/.cache/pip/wheels
     - TESTDATA_DIR=$HOME/testdata
-   
+
 addons:
   apt:
     sources:
@@ -44,7 +44,7 @@ install:
   - python setup.py install
 
 script:
-  - coverage run --source ci_testing/ -m pytest -s
+  - coverage run --source ci_testing/ -m pytest
 
 after_success:
 - coveralls
