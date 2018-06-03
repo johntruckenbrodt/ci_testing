@@ -169,7 +169,7 @@ def test_archive(tmpdir):
         db.export2shp(shp)
     assert spatial.Vector(shp).nfeatures == 1
     os.remove(dbfile)
-    dbfile_old = os.path.join(testdata, 'archive_outdated.csv')
+    dbfile_old = os.path.join(testdir, 'archive_outdated.csv')
     with pytest.raises(OSError):
         with pyroSAR.Archive(dbfile) as db:
             db.import_outdated(dbfile_old)
