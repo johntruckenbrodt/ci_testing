@@ -13,7 +13,7 @@ env:
 addons:
   apt:
     sources:
-      - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
+      - sourceline: 'ppa:ubuntugis/ubuntugis-stable'
     packages:
       - libgdal-dev
       - libudunits2-dev
@@ -38,8 +38,7 @@ before_install:
 
 install:
   - pip install -r requirements.txt
-  - pip install coveralls
-  - pip install coverage
+  - pip install coveralls coverage
   - pip install git+https://github.com/johntruckenbrodt/pyroSAR.git@dev
   - python setup.py install
 
