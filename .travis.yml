@@ -34,7 +34,7 @@ install:
   - python setup.py install
 
 script:
-  - coverage run --source ci_testing/ -m pytest
+  - coverage run --source ci_testing/ -m pytest -s
 
 after_success:
 - coveralls
