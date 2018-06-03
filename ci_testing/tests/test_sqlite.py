@@ -1,7 +1,7 @@
 
-from ci_testing.sqlite_util import __Handler
+from ci_testing.sqlite_util import sqlite_setup
 
 
 def test_ext():
-    handler = __Handler(extensions=['spatialite', 'gdal'])
-    assert len(handler.extensions) == 2
+    conn = sqlite_setup(extensions=['spatialite', 'gdal'])
+    assert 'execute' in dir(conn)
