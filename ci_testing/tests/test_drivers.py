@@ -6,7 +6,7 @@ import sys
 import os
 from datetime import datetime
 
-testdir = 'pyroSAR/tests/data'
+testdir = 'ci_testing/tests/data'
 testfile1 = os.path.join(testdir, 'S1A_IW_GRDH_1SDV_20150222T170750_20150222T170815_004739_005DD8_3768.zip')
 testfile2 = os.path.join(testdir, 'S1A__IW___A_20150309T173017_VV_grd_mli_geo_norm_db.tif')
 
