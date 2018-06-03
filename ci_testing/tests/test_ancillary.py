@@ -32,7 +32,7 @@ def test_seconds():
 def test_run(tmpdir):
     log = os.path.join(str(tmpdir), 'test_run.log')
     out, err = anc.run(cmd=['gdalinfo',
-                            'pyroSAR/tests/data/S1A__IW___A_20150309T173017_VV_grd_mli_geo_norm_db.tif'],
+                            'ci_testing/tests/data/S1A__IW___A_20150309T173017_VV_grd_mli_geo_norm_db.tif'],
                        logfile=log, void=False)
     with pytest.raises(OSError):
         anc.run(['foobar'])
