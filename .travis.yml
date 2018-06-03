@@ -17,6 +17,7 @@ addons:
     - swig2.0
 
 python:
+  - "2.7"
   - "3.4"
 
 virtualenv:
