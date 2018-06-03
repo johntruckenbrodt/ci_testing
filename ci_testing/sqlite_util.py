@@ -21,6 +21,7 @@ try:
 except RuntimeError:
     try:
         from pysqlite2 import dbapi2 as sqlite3
+
         check_loading()
     except ImportError:
         raise RuntimeError(errormessage.format('pysqlite2 does not exist as alternative'))
