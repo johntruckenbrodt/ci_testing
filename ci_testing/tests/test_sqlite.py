@@ -32,6 +32,37 @@ def test_haversine():
     assert haversine(50, 10, 51, 10) == 111194.92664455889
 
 
+def test_Vector():
+    scene = identify('pyroSAR/tests/data/S1A_IW_GRDH_1SDV_20150222T170750_20150222T170815_004739_005DD8_3768.zip')
+    bbox1 = scene.bbox()
+    assert bbox1.getArea() == 7.573045244595988
+    assert bbox1.extent == {'ymax': 52.183979, 'ymin': 50.295261, 'xmin': 8.017178, 'xmax': 12.0268}
+    assert bbox1.nlayers == 1
+    assert bbox1.getProjection('epsg') == 4326
+    assert bbox1.proj4 == '+proj=longlat +datum=WGS84 +no_defs'
+    assert isinstance(bbox1.wkt, str)
+    assert isinstance(bbox1.getFeatureByIndex(0), ogr.Feature)
+    with pytest.raises(IndexError):
+        bbox1.getFeatureByIndex(1)
+    bbox1.reproject(32633)
+    assert bbox1.proj4 == '+proj=utm +zone=33 +datum=WGS84 +units=m +no_defs'
+    assert isinstance(bbox1['id=1'], Vector)
+    with pytest.raises(RuntimeError):
+        test = bbox1[0.1]
+    assert bbox1.fieldnames == ['id']
+    assert bbox1.getUniqueAttributes('id') == [1]
+    feat = bbox1.getFeatureByAttribute('id', 1)
+    assert isinstance(feat, ogr.Feature)
+    bbox2 = feature2vector(feat, ref=bbox1)
+    bbox2.close()
+    feat.Destroy()
+    with pytest.raises(KeyError):
+        select = bbox1.getFeatureByAttribute('foo', 'bar')
+    with pytest.raises(RuntimeError):
+        vec = Vector(driver='foobar')
+    bbox1.close()
+
+
 def test_dissolve(tmpdir):
     scene = identify('ci_testing/tests/data/S1A_IW_GRDH_1SDV_20150222T170750_20150222T170815_004739_005DD8_3768.zip')
     bbox1 = scene.bbox()
