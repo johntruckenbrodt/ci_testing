@@ -2,18 +2,18 @@ import os
 import shutil
 import pytest
 import numpy as np
-from osgeo import gdal, ogr, osr
+from osgeo import ogr
 from pyroSAR import identify
 from pyroSAR.spatial import crsConvert, haversine, Raster, stack, ogr2ogr, gdal_translate, gdal_rasterize, Vector, bbox, intersect
 from pyroSAR.spatial.vector import feature2vector, dissolve
 from pyroSAR.ancillary import finder
 
 
-from ci_testing.sqlite_util import sqlite_setup
+# from ci_testing.sqlite_util import sqlite_setup
 
-gdal.UseExceptions()
-ogr.UseExceptions()
-osr.UseExceptions()
+# gdal.UseExceptions()
+# ogr.UseExceptions()
+# osr.UseExceptions()
 
 
 def test_crsConvert():
@@ -87,6 +87,6 @@ def test_dissolve(tmpdir):
     assert os.path.isfile(bbox4_name)
 
 
-def test_ext():
-    conn = sqlite_setup(extensions=['spatialite', 'gdal'])
-    assert 'execute' in dir(conn)
+# def test_ext():
+#     conn = sqlite_setup(extensions=['spatialite', 'gdal'])
+#     assert 'execute' in dir(conn)
